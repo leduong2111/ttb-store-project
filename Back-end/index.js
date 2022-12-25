@@ -56,7 +56,8 @@ mongoose.connect(MONGO_URL, {
 app.use(express.json({ limit: constants.MAX_SIZE_JSON_REQUEST }));
 app.use(express.urlencoded({ limit: constants.MAX_SIZE_JSON_REQUEST }));
 app.use(cookieParser());
-app.use(cors(corsConfig));
+// app.use(cors(corsConfig));
+app.use(cors({ origin: '*' , credentials : true, optionSuccessStatus:200 }));;
 
 // ! ================== Listening ... ================== //
 app.listen(PORT, () => {

@@ -1,6 +1,13 @@
 const addressApi = require('express').Router();
 const addressController = require('../controllers/address.controller');
 
+addressApi.all('*', function (req, res, next) {
+    req.header('Access-Control-Allow-Origin', '*');
+    req.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+    req.header('Access-Control-Allow-Headers', 'Content-Type', 'User-Agent');
+    next();
+});
+
 // api: lấy danh sách các tỉnh thành phố
 addressApi.get('/province', addressController.getProvince);
 

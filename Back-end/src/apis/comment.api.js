@@ -1,6 +1,13 @@
 const commentApi = require('express').Router();
 const commentController = require('../controllers/comment.controller');
 
+commentApi.all('*', function (req, res, next) {
+    req.header('Access-Control-Allow-Origin', '*');
+    req.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+    req.header('Access-Control-Allow-Headers', 'Content-Type', 'User-Agent');
+    next();
+});
+
 // api: Lấy danh sách comment của 1 sản phẩm
 commentApi.get('/', commentController.getCommentList);
 

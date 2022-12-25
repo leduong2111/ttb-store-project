@@ -1,6 +1,13 @@
 const adminApi = require('express').Router();
 const adminController = require('../controllers/admin.controller');
 
+adminApi.all('*', function (req, res, next) {
+    req.header('Access-Control-Allow-Origin', '*');
+    req.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+    req.header('Access-Control-Allow-Headers', 'Content-Type', 'User-Agent');
+    next();
+});
+
 // api: Lấy danh sách sản phẩm theo trang và loại
 adminApi.get('/products', adminController.getProductListByType);
 

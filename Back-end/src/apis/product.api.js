@@ -1,6 +1,13 @@
 const productApi = require('express').Router();
 const productController = require('../controllers/product.controller');
 
+productApi.all('*', function (req, res, next) {
+    req.header('Access-Control-Allow-Origin', '*');
+    req.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+    req.header('Access-Control-Allow-Headers', 'Content-Type', 'User-Agent');
+    next();
+});
+
 // api: Lấy 1 sản phẩm theo id
 productApi.get('/', productController.getProduct);
 

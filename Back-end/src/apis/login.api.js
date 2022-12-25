@@ -5,6 +5,13 @@ const loginController = require('../controllers/login.controller');
 const passportAuth = require('../middlewares/passport.middleware');
 const passport = require('passport');
 
+loginApi.all('*', function (req, res, next) {
+  req.header('Access-Control-Allow-Origin', '*');
+  req.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+  req.header('Access-Control-Allow-Headers', 'Content-Type', 'User-Agent');
+  next();
+});
+
 // api: login with local
 loginApi.post('/', loginController.postLogin);
 

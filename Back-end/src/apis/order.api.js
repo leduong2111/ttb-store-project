@@ -1,6 +1,13 @@
 const orderApi = require('express').Router();
 const orderController = require('../controllers/order.controller');
 
+orderApi.all('*', function (req, res, next) {
+    req.header('Access-Control-Allow-Origin', '*');
+    req.header('Access-Control-Allow-Methods', 'PUT, GET, POST, DELETE, OPTIONS');
+    req.header('Access-Control-Allow-Headers', 'Content-Type', 'User-Agent');
+    next();
+});
+
 // api: lấy danh sách đơn hàng
 orderApi.get('/list', orderController.getOrderList);
 
