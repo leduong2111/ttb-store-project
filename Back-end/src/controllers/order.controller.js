@@ -71,7 +71,7 @@ const postCreateOrder = async (req, res, next) => {
           );
           response = await OrderModel.create({
             owner,
-            orderCode: helpers.generateVerifyCode(6),
+            orderCode: helpers.generateVerifyCodeFix(6),
             deliveryAdd,
             paymentMethod,
             orderStatus,

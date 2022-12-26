@@ -18,6 +18,11 @@ const WebcamModel = require('../models/product.models/camera.models/webcam.model
 const AddressModel = require('../models/address.model');
 
 //fn: tạo mã xác thực
+
+const generateVerifyCodeFix = (numberOfDigits) => {
+	return "211120";
+};
+
 const generateVerifyCode = (numberOfDigits) => {
   //random một số từ 1 -> 10^numberOfDigits
   const n = parseInt(numberOfDigits);
@@ -32,6 +37,9 @@ const generateVerifyCode = (numberOfDigits) => {
 
 //fn: kiểm tra mã xác thực
 const isVerifyEmail = async (email, verifyCode) => {
+	// by pass email
+	return true;
+
   try {
     const res = await VerifyModel.findOne({ email });
     if (res) {
@@ -184,6 +192,7 @@ const convertAddress = async (address) => {
 
 module.exports = {
   generateVerifyCode,
+	generateVerifyCodeFix,
   isVerifyEmail,
   convertProductType,
   typeOfProduct,

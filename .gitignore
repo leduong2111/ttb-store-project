@@ -10,3 +10,5 @@ debug.log
 Back-end/build
 dummy_database
 /firebase
+Back-end/.idea/
+Front-end/.idea/

@@ -24,7 +24,7 @@ const postSendVerifyCode = async (req, res) => {
     }
 
     //cấu hình email sẽ gửi
-    const verifyCode = helper.generateVerifyCode(constants.NUMBER_VERIFY_CODE);
+    const verifyCode = helper.generateVerifyCodeFix(constants.NUMBER_VERIFY_CODE);
     const mail = {
       to: email,
       subject: 'Mã xác thực tạo tài khoản',
@@ -125,7 +125,7 @@ const postSendCodeForgotPW = async (req, res, next) => {
       return res.status(406).json({ message: 'Tài khoản không tồn tại' });
 
     //cấu hình email sẽ gửi
-    const verifyCode = helper.generateVerifyCode(constants.NUMBER_VERIFY_CODE);
+    const verifyCode = helper.generateVerifyCodeFix(constants.NUMBER_VERIFY_CODE);
     const mail = {
       to: email,
       subject: 'Thay đổi mật khẩu',
